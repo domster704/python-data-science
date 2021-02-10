@@ -1,0 +1,46 @@
+header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #1a1a1a;
+}
+
+.spinner-border {
+    margin-left: 5px;
+}
+
+body {
+    background: #212121;
+}
+
+q {
+    /* quotes: "\00ab" "\00bb"; */
+    quotes: "\201c" "\201d";
+    font-weight: bold;
+}
+
+label, p, small,
+h1,
+h2,
+h3,
+h4, 
+h5, 
+h6 {
+    color: white;
+}
+
+#my-input {
+    width: 700px;
+}
+
+.spinbox {
+    border: none;
+    border-radius: 5px;
+    font-size: 17pt;
+    width: 200px;
+}
+
+.nec_data {
+    max-width: 200px;
+    font-size: 17pt;
+    max-height: 35px;
+}
