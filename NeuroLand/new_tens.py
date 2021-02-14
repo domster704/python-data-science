@@ -7,11 +7,53 @@ from sklearn.model_selection import train_test_split
 from tensorflow.python.keras.utils import losses_utils
 
 
-class PrintDot(keras.callbacks.Callback):
-	def on_epoch_end(self, epoch, logs):
-		if epoch % 100 == 0:
-			print('')
-		print('.', end='')
+# TODO: make new type of neuronet with new file.csv (new scaling data and cost per one square)
+#  change below params
+BATCH_SIZE = 21
+PATH = 'model/X_model/X_model_v1'
+HIDDEN_UNITS = [13, 780]
+STEPS = 50000
+EPOCHS = 2000
+OPTIMIZER = "Adagrad"  # ('Adagrad', 'Adam', 'Ftrl', 'RMSProp', 'SGD')
+ACTIVATION_FN = "relu"
+
+# https://www.tensorflow.org/api_docs/python/tf/keras/activations?hl=ru
+# deserialize: Returns activation function given a string identifier.
+# elu: Exponential Linear Unit.
+# exponential: Exponential activation function.
+# gelu: Applies the Gaussian error linear unit (GELU) activation function.
+# get: Returns function.
+# hard_sigmoid: Hard sigmoid activation function.
+# linear: Linear activation function (pass-through).
+# relu: Applies the rectified linear unit activation function.
+# selu: Scaled Exponential Linear Unit (SELU).
+# serialize: Returns the string identifier of an activation function.
+# sigmoid: Sigmoid activation function, sigmoid(x) = 1 / (1 + exp(-x)).
+# softmax: Softmax converts a real vector to a vector of categorical probabilities.
+# softplus: Softplus activation function, softplus(x) = log(exp(x) + 1).
+# softsign: Softsign activation function, softsign(x) = x / (abs(x) + 1).
+# swish: Swish activation function, swish(x) = x * sigmoid(x).
+# tanh: Hyperbolic tangent activation function.
+
+LOSS_REDUCTION = losses_utils.ReductionV2.SUM_OVER_BATCH_SIZE
+
+# https://www.tensorflow.org/api_docs/python/tf/keras/losses?hl=ru
+# deserialize(...): Returns activation function given a string identifier.
+# elu(...): Exponential Linear Unit.
+# exponential(...): Exponential activation function.
+# gelu(...): Applies the Gaussian error linear unit (GELU) activation function.
+# get(...): Returns function.
+# hard_sigmoid(...): Hard sigmoid activation function.
+# linear(...): Linear activation function (pass-through).
+# relu(...): Applies the rectified linear unit activation function.
+# selu(...): Scaled Exponential Linear Unit (SELU).
+# serialize(...): Returns the string identifier of an activation function.
+# sigmoid(...): Sigmoid activation function, sigmoid(x) = 1 / (1 + exp(-x)).
+# softmax(...): Softmax converts a real vector to a vector of categorical probabilities.
+# softplus(...): Softplus activation function, softplus(x) = log(exp(x) + 1).
+# softsign(...): Softsign activation function, softsign(x) = x / (abs(x) + 1).
+# swish(...): Swish activation function, swish(x) = x * sigmoid(x).
+# tanh(...): Hyperbolic tangent activation function.
 
 
 def createModelForAllData():
@@ -32,7 +74,7 @@ def createModelForAllData():
 	purity = tf.feature_column.numeric_column('Purity')
 	utilities = tf.feature_column.numeric_column('Utilities')
 	neighbors = tf.feature_column.numeric_column('Neighbors')
-	childs = tf.feature_column.numeric_column('Children')
+	children = tf.feature_column.numeric_column('Children')
 	relax = tf.feature_column.numeric_column('SportsAndRecreation')
 	shops = tf.feature_column.numeric_column('Shops')
 	transports = tf.feature_column.numeric_column('Transport')
@@ -40,7 +82,7 @@ def createModelForAllData():
 	lifecost = tf.feature_column.numeric_column('LifeCost')
 	city = tf.feature_column.numeric_column('City')
 
-	feat_cols = [area, distance, ecology, purity, utilities, neighbors, childs, relax, shops, transports, security,
+	feat_cols = [area, distance, ecology, purity, utilities, neighbors, children, relax, shops, transports, security,
 				 lifecost, city]
 
 	input_func = tf.compat.v1.estimator.inputs.pandas_input_fn(x=x_train, y=y_train, batch_size=BATCH_SIZE,
@@ -98,7 +140,7 @@ def create_model(a):
 	purity = tf.feature_column.numeric_column('Purity')
 	utilities = tf.feature_column.numeric_column('Utilities')
 	neighbors = tf.feature_column.numeric_column('Neighbors')
-	childs = tf.feature_column.numeric_column('Children')
+	children = tf.feature_column.numeric_column('Children')
 	relax = tf.feature_column.numeric_column('SportsAndRecreation')
 	shops = tf.feature_column.numeric_column('Shops')
 	transports = tf.feature_column.numeric_column('Transport')
@@ -106,7 +148,7 @@ def create_model(a):
 	lifecost = tf.feature_column.numeric_column('LifeCost')
 	city = tf.feature_column.numeric_column('City')
 
-	feat_cols = [area, distance, ecology, purity, utilities, neighbors, childs, relax, shops, transports, security,
+	feat_cols = [area, distance, ecology, purity, utilities, neighbors, children, relax, shops, transports, security,
 				 lifecost, city]
 
 	input_func = tf.compat.v1.estimator.inputs.pandas_input_fn(x=x_train, y=y_train, batch_size=BATCH_SIZE,
@@ -130,7 +172,7 @@ def create_model(a):
 		final_y_preds.append(pred['predictions'])
 
 
-	# return final_y_preds[0]
+# return final_y_preds[0]
 
 
 def getDataFromReadyNeural(a):
@@ -186,7 +228,7 @@ def getDataFromReadyNeural(a):
 	purity = tf.feature_column.numeric_column('Purity')
 	utilities = tf.feature_column.numeric_column('Utilities')
 	neighbors = tf.feature_column.numeric_column('Neighbors')
-	childs = tf.feature_column.numeric_column('Children')
+	children = tf.feature_column.numeric_column('Children')
 	relax = tf.feature_column.numeric_column('SportsAndRecreation')
 	shops = tf.feature_column.numeric_column('Shops')
 	transports = tf.feature_column.numeric_column('Transport')
@@ -194,7 +236,7 @@ def getDataFromReadyNeural(a):
 	lifecost = tf.feature_column.numeric_column('LifeCost')
 	city = tf.feature_column.numeric_column('City')
 
-	feat_cols = [area, distance, ecology, purity, utilities, neighbors, childs, relax, shops, transports, security,
+	feat_cols = [area, distance, ecology, purity, utilities, neighbors, children, relax, shops, transports, security,
 				 lifecost, city]
 
 	model = tf.estimator.DNNRegressor(hidden_units=HIDDEN_UNITS, feature_columns=feat_cols, model_dir=PATH,
@@ -213,52 +255,6 @@ def getDataFromReadyNeural(a):
 
 
 if __name__ == "__main__":
-	BATCH_SIZE = 21
-	PATH = 'model/X_model/X_model_v1'
-	HIDDEN_UNITS = [13, 780]
-	STEPS = 50000
-	EPOCHS = 2000
-	OPTIMIZER = "Adagrad"  # ('Adagrad', 'Adam', 'Ftrl', 'RMSProp', 'SGD')
-	ACTIVATION_FN = "relu"
-	'''
-	https://www.tensorflow.org/api_docs/python/tf/keras/activations?hl=ru
-deserialize: Returns activation function given a string identifier.
-elu: Exponential Linear Unit.
-exponential: Exponential activation function.
-gelu: Applies the Gaussian error linear unit (GELU) activation function.
-get: Returns function.
-hard_sigmoid: Hard sigmoid activation function.
-linear: Linear activation function (pass-through).
-relu: Applies the rectified linear unit activation function.
-selu: Scaled Exponential Linear Unit (SELU).
-serialize: Returns the string identifier of an activation function.
-sigmoid: Sigmoid activation function, sigmoid(x) = 1 / (1 + exp(-x)).
-softmax: Softmax converts a real vector to a vector of categorical probabilities.
-softplus: Softplus activation function, softplus(x) = log(exp(x) + 1).
-softsign: Softsign activation function, softsign(x) = x / (abs(x) + 1).
-swish: Swish activation function, swish(x) = x * sigmoid(x).
-tanh: Hyperbolic tangent activation function.
-'''
-	LOSS_REDUCTION = losses_utils.ReductionV2.SUM_OVER_BATCH_SIZE
-	'''
-	https://www.tensorflow.org/api_docs/python/tf/keras/losses?hl=ru
-deserialize(...): Returns activation function given a string identifier.
-elu(...): Exponential Linear Unit.
-exponential(...): Exponential activation function.
-gelu(...): Applies the Gaussian error linear unit (GELU) activation function.
-get(...): Returns function.
-hard_sigmoid(...): Hard sigmoid activation function.
-linear(...): Linear activation function (pass-through).
-relu(...): Applies the rectified linear unit activation function.
-selu(...): Scaled Exponential Linear Unit (SELU).
-serialize(...): Returns the string identifier of an activation function.
-sigmoid(...): Sigmoid activation function, sigmoid(x) = 1 / (1 + exp(-x)).
-softmax(...): Softmax converts a real vector to a vector of categorical probabilities.
-softplus(...): Softplus activation function, softplus(x) = log(exp(x) + 1).
-softsign(...): Softsign activation function, softsign(x) = x / (abs(x) + 1).
-swish(...): Swish activation function, swish(x) = x * sigmoid(x).
-tanh(...): Hyperbolic tangent activation function.
-'''
 
 	l = [
 		# [16.0, 0.0, 3000000.0, 3.3, 3.1, 2.7, 3.7, 3.4, 3.0, 4.2, 2.9, 3.4, 2.1, 1.0],

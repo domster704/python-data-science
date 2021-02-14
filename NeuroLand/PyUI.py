@@ -95,7 +95,7 @@ def neuronet_with_url(url):
 	from new_tens import getDataFromReadyNeural
 	per = getDataFromReadyNeural(data)
 	print(per)
-	return [per, data[2]]
+	return [round(per), data[2]]
 
 
 @eel.expose
@@ -105,7 +105,7 @@ def neuronet_with_data(data):
 	from new_tens import getDataFromReadyNeural
 	per = getDataFromReadyNeural(data)
 	print(per)
-	return per
+	return round(per)
 
 
 eel.start('index.html', size=(1024, 720))

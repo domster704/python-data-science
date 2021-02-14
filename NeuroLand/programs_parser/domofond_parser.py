@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests
 import re
-from PythonDataScience.NeuroLand import additional_data
+import additional_data
 
 HEADERS = {
 	'User-Agent': ''  # UserAgent(verify_ssl=False).chrome
@@ -95,11 +95,10 @@ CITY = {
 def parser(start_page=1, end_page=1, page_counter=True, _headers=None):
 	"""Записывает данные из domofond.ru по нескольким параметрам
 
-	start_page(int) -- номер страницы, с которой функция начнёт парсинг
-	end_page(int) -- номер страницы, на которой функция закончит парсинг
-	page_counter(bool) -- показывать номер страницы, которую обрабатывает функция
-	_headers -- user agent
-
+	:param: start_page(int) -- номер страницы, с которой функция начнёт парсинг
+	:param: end_page(int) -- номер страницы, на которой функция закончит парсинг
+	:param: page_counter(bool) -- показывать номер страницы, которую обрабатывает функция
+	:param: _headers -- user agent
 	"""
 	if _headers is None:
 		_headers = HEADERS
@@ -187,9 +186,7 @@ def get_data_by_link(url: str):
 
 	:param url: ссылка (str)
 	:return: данные об участке земли (str)
-
 	"""
-
 	response = requests.get(url).content
 	soup_nested = bs(response, 'html.parser')
 	detail_information = soup_nested.findAll('div', 'detail-information__row___29Fu6')
@@ -207,7 +204,6 @@ def get_data_by_link(url: str):
 	if proximity == "Вчертегорода":
 		proximity = '2'
 
-	# print(area, proximity, price, city)
 	# Оценка района
 	ratings = {}
 	void_ratings = additional_data.get_average_from_file()
@@ -224,8 +220,9 @@ def get_data_by_link(url: str):
 
 	if not ratings:
 		return dummy_response
-	data_ = f'{area},{proximity},{price},{",".join([y.replace(",", ".") for x, y in ratings.items()])},{CITY[city]}'.split(',')
-	data_[-1] = CITY[data_[-1]]
+	data_ = f'{area},{proximity},{price},{",".join([y.replace(",", ".") for x, y in ratings.items()])},{CITY[city]}' \
+		.split(',')
+	# data_[-1] = CITY[data_[-1]]
 	data_ = list(map(float, data_))
 	return data_
 
