@@ -99,6 +99,22 @@ def neuronet_with_url(url):
 
 
 @eel.expose
+def neuronet_with_list_url(list_url):
+	data = []
+	for i in list_url:
+		data.append(domofond_parser.get_data_by_link(i))
+
+	from new_tens import getDataFromReadyNeural
+	list_cost = []
+	for i in data:
+		list_cost.append(getDataFromReadyNeural(i))
+
+	for i in range(len(data)):
+		data[i].append(list_cost[i])
+	return data
+
+
+@eel.expose
 def neuronet_with_data(data):
 	data[-1] = city[data[-1]]
 	print(data)
