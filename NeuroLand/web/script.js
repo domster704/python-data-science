@@ -89,6 +89,15 @@ for (let i of cityList) {
 	data_list.append(`<option>${i}</option>`);
 }
 
-$.append(
-'<form method="POST" id="form1"><div class="form-group"><label class="font-weight-bold" for="my-input">Ссылка</label><div class="form-inline"><input id="my-input" class="form-control" type="text" placeholder="Введите URL"><input type="button" style="margin-left:7px" class="btn btn-primary" id="but1"                          value="Получить"></input><div class="spinner-border text-light"></div></div><small class="form-text">Поддерживаются сайты: domofond.ru</small></div></form>').appendTo('body');
+$('#hesh_plus').click(  function () {
+
+	$(this).parent().append(
+	'<form method="POST" id="form1"><div class="form-group"><label class="font-weight-bold" for="my-input">Ссылка</label><div class="form-inline"><input id="my-input" class="form-control" type="text" placeholder="Введите URL"><div class="spinner-border text-light"></div></div></div></form>');
+
+	$(this).parent().append(
+		'<button id="hesh_plus">+</button>'
+	);
+
+	$('hesh_plus').remove();
+})
 

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,186 +12,197 @@
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="style.css">
     <title>NeuroLand</title>
-  </head>
-  <body>
-    <header>
-        <div class="container">
-            <!-- <div class="row">
-                <div class="col-md-3 col-xs-10">
-                    <a href="#" class="thumbnail logo">
-                        <img src="images/logo2.png" alt="" class="img-responsive">
-                    </a>
-                </div>
-            </div> -->
-            <ul class="nav nav-pills" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="pill" href="#main" role="tab">Program</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#add" role="tab">Additional mode</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="pill" href="#help" role="tab">Help</a>
-                </li>
-            </ul>
-        </div>
-    </header>
-    <section>
-        <div class="container tab-content">
-            <div class="tab-pane fade show active" id="main" role="tabpanel">
-                <form method="POST" id="form1">
-                    <div class="form-group">
-                        <label class="font-weight-bold" for="my-input">Ссылка</label>
-                        <div class="form-inline">
-                            <input id="my-input" class="form-control" type="text" placeholder="Введите URL">
-                            <input type="button" style="margin-left:7px" class="btn btn-primary" id="but1"                          value="Получить"></input>
-                            <div class="spinner-border text-light"></div>
-                        </div>
-                        <small class="form-text">Поддерживаются сайты: domofond.ru</small>
-                    </div>
-                </form>
-                
-                <div>
-                    <h2><p id="cost1" class="text-light"></p></h2>
-                    <h2><p id="cost1_2" class="text-light"></p></h2>
-                 </div>
+</head>
+<body>
+<header>
+    <div class="container">
+        <!-- <div class="row">
+            <div class="col-md-3 col-xs-10">
+                <a href="#" class="thumbnail logo">
+                    <img src="images/logo2.png" alt="" class="img-responsive">
+                </a>
             </div>
-            <div class="tab-pane fade" id="add" role="tabpanel">
-                <form method="POST" id="form1">
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Площадь</label>
-                            <div class="form-inline">
-                                <input id="area" class="form-control nec_data" type="text" placeholder="0 сот">
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Экология</label>
-                            <div class="form-inline">
-                                <input id="ecology" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Чистота</label>
-                            <div class="form-inline">
-                                <input id="purity" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
+        </div> -->
+        <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="pill" href="#main" role="tab">Program</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#add" role="tab">Additional mode</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill" href="#help" role="tab">Help</a>
+            </li>
+        </ul>
+    </div>
+</header>
+<section>
+    <div class="container tab-content">
+        <div class="tab-pane fade show active" id="main" role="tabpanel">
+            <form method="POST" id="form1">
+                <div class="form-group">
+                    <label class="font-weight-bold" for="my-input">Ссылка</label>
+                    <div class="form-inline">
+                        <input id="my-input" class="form-control" type="text" placeholder="Введите URL">
+                        <input type="button" style="margin-left:7px" class="btn btn-primary" id="but1"
+                               value="Получить"/>
+                        <div class="spinner-border text-light"></div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Расстояние от города</label>
-                            <div class="form-inline">
-                                <input id="proximity" class="form-control nec_data" type="text" placeholder="0 км">
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">ЖКХ</label>
-                            <div class="form-inline">
-                                <input id="utilities" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Соседи</label>
-                            <div class="form-inline">
-                                <input id="neighbours" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Область</label>
-                            <div class="form-inline">
-                                <input id="region" list="city" style="max-width: 200px;" class="form-control" type="text">
-                                <datalist id="city"></datalist>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Условия для детей</label>
-                            <div class="form-inline">
-                                <input id="children" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Спорт и отдых</label>
-                            <div class="form-inline">
-                                <input id="sport" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-3 offset-md-3">
-                            <label class="font-weight-bold">Магазины</label>
-                            <div class="form-inline">
-                                <input id="shop" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Транспорт</label>
-                            <div class="form-inline">
-                                <input id="transport" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-3 offset-md-3">
-                            <label class="font-weight-bold">Безопасность</label>
-                            <div class="form-inline">
-                                <input id="safety" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="font-weight-bold">Стоимость жизни</label>
-                            <div class="form-inline">
-                                <input id="lifecost" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <form>
-                    <div class="row form-group">
-                        <div class="col-md-9 form-inline">
-                            <input type="button" class="btn btn-primary" id="but2" style="width: 44vw;" value="Получить"></input>
-                            <div class="spinner-border text-light"></div>
-                        </div>
-                    </div>
-                </form>
-                <br>
-                <div>
-                    <h2><p id="cost2" class="text-light"></p></h2>
-                 </div>
-            </div>
-            <div class="tab-pane fade" id="help" role="tabpanel">
-                <h1>Помощь в использовании</h1>
-                <div id="help1">
-                    <h3>1. Что делает данная программа</h3>
-                    <p>Данное приложение, с помощью нейронной сети, находит реальную цену, то есть без каких-либо<br>
-                       завышений и других влияний на цену. Вы так же можете сравнить результат приложения с ценой с<br>
-                       сайта во вкладке <q>Program</q>.</p>
                 </div>
-                <div id="help2">
-                    <h3>2. Как пользоваться программой</h3>
-                    <h4>Способ 1</h4>
-                    <p>Введите ссылку с поддерживаемых сайтов (см. ниже в пункте) во вкладке <q>Program</q> и нажмите<br>
-                       кнопку <q>Получить</q>, подождите несколько секунд, и программа выдаст вам результат.</p>
-                    <h4>Способ 2</h4>
-                    <p>Зайдите во вкладку <q>Additional mode</q> и в указанных полях выставите свои данные, после <br>
-                       чего нажмите кнопку <q>Получить</q>. Подождите несколько секунд, и программа выдаст вам результат.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </form>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="/eel.js"></script>
-    <script src="script.js"></script>
-    <script>
+            <button id="hesh_plus">+</button>
+
+            <div>
+                <h2><p id="cost1" class="text-light"></p></h2>
+                <h2><p id="cost1_2" class="text-light"></p></h2>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="add" role="tabpanel">
+            <form method="POST" id="form1">
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Площадь</label>
+                        <div class="form-inline">
+                            <input id="area" class="form-control nec_data" type="text" placeholder="0 сот">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Экология</label>
+                        <div class="form-inline">
+                            <input id="ecology" class="spinbox" type="number" min="0.0" max="5.0" value="3.0"
+                                   step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Чистота</label>
+                        <div class="form-inline">
+                            <input id="purity" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Расстояние от города</label>
+                        <div class="form-inline">
+                            <input id="proximity" class="form-control nec_data" type="text" placeholder="0 км">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">ЖКХ</label>
+                        <div class="form-inline">
+                            <input id="utilities" class="spinbox" type="number" min="0.0" max="5.0" value="3.0"
+                                   step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Соседи</label>
+                        <div class="form-inline">
+                            <input id="neighbours" class="spinbox" type="number" min="0.0" max="5.0" value="3.0"
+                                   step="0.1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Область</label>
+                        <div class="form-inline">
+                            <input id="region" list="city" style="max-width: 200px;" class="form-control" type="text">
+                            <datalist id="city"></datalist>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Условия для детей</label>
+                        <div class="form-inline">
+                            <input id="children" class="spinbox" type="number" min="0.0" max="5.0" value="3.0"
+                                   step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Спорт и отдых</label>
+                        <div class="form-inline">
+                            <input id="sport" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3 offset-md-3">
+                        <label class="font-weight-bold">Магазины</label>
+                        <div class="form-inline">
+                            <input id="shop" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Транспорт</label>
+                        <div class="form-inline">
+                            <input id="transport" class="spinbox" type="number" min="0.0" max="5.0" value="3.0"
+                                   step="0.1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3 offset-md-3">
+                        <label class="font-weight-bold">Безопасность</label>
+                        <div class="form-inline">
+                            <input id="safety" class="spinbox" type="number" min="0.0" max="5.0" value="3.0" step="0.1">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="font-weight-bold">Стоимость жизни</label>
+                        <div class="form-inline">
+                            <input id="lifecost" class="spinbox" type="number" min="0.0" max="5.0" value="3.0"
+                                   step="0.1">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form>
+                <div class="row form-group">
+                    <div class="col-md-9 form-inline">
+                        <input type="button" class="btn btn-primary" id="but2" style="width: 44vw;"
+                               value="Получить"></input>
+                        <div class="spinner-border text-light"></div>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div>
+                <h2><p id="cost2" class="text-light"></p></h2>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="help" role="tabpanel">
+            <h1>Помощь в использовании</h1>
+            <div id="help1">
+                <h3>1. Что делает данная программа</h3>
+                <p>Данное приложение, с помощью нейронной сети, находит реальную цену, то есть без каких-либо<br>
+                    завышений и других влияний на цену. Вы так же можете сравнить результат приложения с ценой с<br>
+                    сайта во вкладке <q>Program</q>.</p>
+            </div>
+            <div id="help2">
+                <h3>2. Как пользоваться программой</h3>
+                <h4>Способ 1</h4>
+                <p>Введите ссылку с поддерживаемых сайтов (см. ниже в пункте) во вкладке <q>Program</q> и нажмите<br>
+                    кнопку <q>Получить</q>, подождите несколько секунд, и программа выдаст вам результат.</p>
+                <h4>Способ 2</h4>
+                <p>Зайдите во вкладку <q>Additional mode</q> и в указанных полях выставите свои данные, после <br>
+                    чего нажмите кнопку <q>Получить</q>. Подождите несколько секунд, и программа выдаст вам результат.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="/eel.js"></script>
+<script src="script.js"></script>
+<script>
         $(document).ready(function() {
+            
         $('.spinner-border').hide(50)
 
         $('#but1').click(function () {
@@ -245,12 +256,14 @@
             document.getElementById("cost1").innerHTML = "Цена: " + data_from[0] + " ₽"
             document.getElementById("cost1_2").innerHTML = "Цена на сайте: " + data_from[1] + " ₽"
         }
+
         function setTextAdd(data_from) {
             $('.spinner-border').hide(50)
             document.getElementById("cost2").innerHTML = "Цена: " + data_from + " ₽"
         }
 
     })
-    </script>
-  </body>
+
+</script>
+</body>
 </html>
