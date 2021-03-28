@@ -270,9 +270,9 @@ if __name__ == "__main__":
 	array = [
 		# [create_model(l[0]), l[0][2]],
 		[getDataFromReadyNeural(l[1]), l[0][2]],
-		[getDataFromReadyNeural(l[2]), l[2][2]],
-		[getDataFromReadyNeural(l[3]), l[3][2]],
-		[getDataFromReadyNeural(l[4]), l[4][2]],
+		# [getDataFromReadyNeural(l[2]), l[2][2]],
+		# [getDataFromReadyNeural(l[3]), l[3][2]],
+		# [getDataFromReadyNeural(l[4]), l[4][2]],
 	]
 
 	for i in range(len(array)):

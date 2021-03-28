@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests
 import re
-import additional_data
+from NeuroLand import additional_data
 
 HEADERS = {
 	'User-Agent': ''  # UserAgent(verify_ssl=False).chrome
