@@ -41,17 +41,17 @@
         <div class="tab-pane fade show active" id="main" role="tabpanel">
             <form method="POST" id="form1">
                 <div class="form-group">
-                    <label class="font-weight-bold" for="my-input">Ссылка</label>
-                    <div class="form-inline">
-                        <input id="my-input" class="form-control" type="text" placeholder="Введите URL">
-                        <input type="button" style="margin-left:7px" class="btn btn-primary" id="but1"
+                    <label class="font-weight-bold" for="my-input1">Ссылка</label>
+                    <div class="">
+                        <input id="my-input1" class="form-control x1" type="text" placeholder="Введите URL">
+                        <input type="button" style="margin-top:16px" class="btn btn-primary" id="but1"
                                value="Получить"/>
                         <div class="spinner-border text-light"></div>
                     </div>
                 </div>
             </form>
 
-            <button id="hesh_plus">+</button>
+            <button id="hesh_plus" class="btn btn-secondary">+</button>
 
             <div>
                 <h2><p id="cost1" class="text-light"></p></h2>
@@ -202,17 +202,45 @@
 <script src="script.js"></script>
 <script>
         $(document).ready(function() {
-            
+        
+        let count = 1;
+        $(`#hesh_plus`).click(  function () {
+
+            count++;
+
+            if (count <= 5) {
+                $(`#my-input${count-1}`).after($(`<input id="my-input${count}" class="form-control x1" type="text" placeholder="Введите URL">`))
+            } else {
+                $('#hesh_plus').addClass('disabled');
+            }
+
+        })
+
+
         $('.spinner-border').hide(50)
 
         $('#but1').click(function () {
-            let data = $('#my-input').val()
-            try {
-                eel.neuronet_with_url(data)(setTextProgram)
-                $('.spinner-border').show(50)
-            }
-            catch {
-                alert("Попробуйте снова")
+            if (count == 1) {
+                let data = $('#my-input1').val()
+                try {
+                    eel.neuronet_with_url(data)(setTextProgram)
+                    $('.spinner-border').show(50)
+                }
+                catch {
+                    alert("Попробуйте снова")
+                }
+            } else if (count >= 1) {
+                let data = []
+                for (let i = 1; i <= count; i++) {
+                    data.push($(`#my-input${i}`).val())
+                }
+                try {
+                    eel.neuronet_with_list_url(data)(setTextProgram2)
+                    $('.spinner-border').show(50)
+                }
+                catch {
+                    alert("Попробуйте снова")
+                }
             }
         })
         
@@ -260,6 +288,11 @@
         function setTextAdd(data_from) {
             $('.spinner-border').hide(50)
             document.getElementById("cost2").innerHTML = "Цена: " + data_from + " ₽"
+        }
+
+        function setTextProgram2(data_from) {
+            $('.spinner-border').hide(50)
+            document.getElementById("cost1").innerHTML = "Цена: " + data_from + " ₽"
         }
 
     })

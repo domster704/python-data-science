@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests
 import re
-from NeuroLand import additional_data
+import additional_data
 
 HEADERS = {
 	'User-Agent': ''  # UserAgent(verify_ssl=False).chrome
@@ -187,6 +187,7 @@ def get_data_by_link(url: str):
 	:param url: ссылка (str)
 	:return: данные об участке земли (str)
 	"""
+	print(url)
 	response = requests.get(url).content
 	soup_nested = bs(response, 'html.parser')
 	detail_information = soup_nested.findAll('div', 'detail-information__row___29Fu6')

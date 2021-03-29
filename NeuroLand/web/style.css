@@ -28,8 +28,16 @@ h6 {
     color: white;
 }
 
-#my-input {
+.x1 {
     width: 700px;
+    margin-top: 16px;
+}
+
+#hesh_plus {
+    font-weight: 700;
+    text-align: center;
+    max-width: 38px;
+    max-height: 38px;
 }
 
 .spinbox {
