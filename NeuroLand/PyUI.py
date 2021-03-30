@@ -114,7 +114,6 @@ def neuronet_with_list_url(list_url):
 	print([round(min(list_cost), 2), list_cost.index(min(list_cost))])
 	return [data, round(min(list_cost), 2), list_cost.index(min(list_cost))]
 
-
 @eel.expose
 def neuronet_with_data(data):
 	data[-1] = city[data[-1]]
