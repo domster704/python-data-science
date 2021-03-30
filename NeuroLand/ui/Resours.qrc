@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="f3">
-    <file>font1.ttf</file>
-    <file>f1.jpg</file>
-    <file>xd.jpg</file>
-    <file>f3.jpg</file>
-  </qresource>
-</RCC>
