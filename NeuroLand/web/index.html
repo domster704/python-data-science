@@ -292,7 +292,7 @@
 
         function setTextProgram2(data_from) {
             $('.spinner-border').hide(50)
-            document.getElementById("cost1").innerHTML = "Цена: " + data_from + " ₽"
+            document.getElementById("cost1").innerHTML = "Цена: " + data_from[1] + " ₽" + "</br>" + "Ссылка: " + data_from[3][data_from[2]]; 
         }
 
     })
