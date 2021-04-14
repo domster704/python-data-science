@@ -111,8 +111,9 @@ def neuronet_with_list_url(list_url):
 
 	for i in range(len(data)):
 		data[i].append(list_cost[i])
-	print([round(min(list_cost), 2), list_cost.index(min(list_cost))])
+
 	return [data, round(min(list_cost), 2), list_cost.index(min(list_cost)), list_url]
+
 
 @eel.expose
 def neuronet_with_data(data):
