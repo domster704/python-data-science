@@ -1,0 +1,1 @@
+worker: python cd NeuroLand && server.py
